@@ -25,7 +25,7 @@ import { MenuItem } from '@headlessui/vue'
             bigger trial
         </Button>
         <div v-else class="hidden md:flex flex-col items-center">
-            <p class="text-[14px] font-[600] leading-[24px] text-[#192A3E]">100GB</p>
+            <p class="text-[14px] font-[600] leading-[24px] text-[#192A3E] dark:text-white">100GB</p>
             <p class="text-[12px] font-[500] leading-[18px] text-[#B4B4B4]">Available Bandwidth</p>
 
         </div>
@@ -34,7 +34,8 @@ import { MenuItem } from '@headlessui/vue'
             <ThemeToggle />
             <div class="flex items-center gap-3 text-[16px] text-gray-700 font-semibold">
                 <div class="xl:flex flex-col hidden">
-                    <span class="font-[500] text-[14px] leading-[24px] text-[#192A3E]">Full Name (User Name)</span>
+                    <span class="font-[500] text-[14px] leading-[24px] text-[#192A3E] dark:text-white">Full Name (User
+                        Name)</span>
                     <span class="font-[500] text-[12px] leading-[18px] text-[#B4B4B4]">LoremIpsum@gmail.com</span>
                 </div>
                 <DropDown>
@@ -86,7 +87,7 @@ import { MenuItem } from '@headlessui/vue'
 
                         <MenuItem v-slot="{ active }" class="mt-[13px]">
                         <RouterLink to="/"
-                            :class="[active ? 'text-[#07B6BF]' : 'text-[#07B6BF]', 'bg-[#F6F7FB] dark:text-[#b4b4b4b4] block px-[28px] py-[13px] text-sm']"
+                            :class="[active ? 'text-[#07B6BF]' : 'text-[#07B6BF]', 'bg-[#F6F7FB] dark:text-[#07B6BF] block px-[28px] py-[13px] text-sm']"
                             class="flex gap-[13px] rounded-b-[8px]">
                             <img src="../../assets/icons/logoutIcon.svg" alt="">
                             Log out

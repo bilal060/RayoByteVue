@@ -1,25 +1,23 @@
 <script setup>
 import { useDark, useToggle } from '@vueuse/core';
-// import { onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const isDark = useDark();
-
-// let theme = ref()
-// onMounted(() => {
-//     console.log(`the component is now mounted.`)
-//     theme = localStorage.getItem('vueuse-color-scheme')
-//     if (theme === "dark") {
-//         console.log(isDark)
-//     }
-//     else {
-//         return
-//     }
-// })
+let theme = ref()
+onMounted(() => {
+    theme = localStorage.getItem('vueuse-color-scheme')
+    if (theme === "dark") {
+        console.log("dark")
+    }
+    else {
+        return
+    }
+})
 const toggleDark = useToggle(isDark);
 </script>
 <template>
     <label class="h-20px">
-        <input class='toggle-checkbox' type='checkbox' @change="toggleDark()" />
+        <input class='toggle-checkbox' type='checkbox'  />
         <div class='toggle-slot'>
             <div class='sun-icon-wrapper'>
                 <div class="iconify sun-icon" data-icon="feather-sun" data-inline="false">

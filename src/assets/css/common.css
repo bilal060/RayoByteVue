@@ -145,8 +145,11 @@ input[type=number]::-webkit-inner-spin-button {
     border-bottom: 10px solid #ccc;
     border-left: 10px solid transparent;
     border-bottom-color: rgba(0, 0, 0, 0.22);
-    /* border-radius: 20px; */
     content: '';
+}
+
+.dark .menulist::before {
+    border-bottom-color: #343434 !important;
 }
 
 .menulist::after {
@@ -160,6 +163,14 @@ input[type=number]::-webkit-inner-spin-button {
     content: '';
 }
 
+.dark .menulist::after {
+    border-bottom: 9px solid #0D0D0D;
+}
+
 .menulist {
     position: relative;
+}
+
+.menulist a:first-child {
+    border-radius: 8px 8px 0 0 !important;
 }

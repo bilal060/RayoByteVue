@@ -19,7 +19,6 @@ import {
     ListboxOption,
 } from '@headlessui/vue'
 import { ref } from 'vue'
-
 const selectedCountry = ref(allCountries[0][0]);
 </script>
 
