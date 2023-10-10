@@ -1,0 +1,165 @@
+.p-checkbox .p-checkbox-box {
+    height: 15px !important;
+    width: 15px !important;
+    border-radius: 2px !important;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+    background-color: #D2E2F0 !important;
+    border-color: #07B6BF !important;
+}
+
+
+.p-checkbox .p-checkbox-box.p-highlight svg path {
+    fill: #07B6BF !important;
+}
+
+.p-checkbox .p-checkbox-box .p-checkbox-icon.p-icon {
+    height: 8px;
+    width: 8px;
+}
+
+.toggle-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.toggle-slot {
+    position: relative;
+    height: 30px;
+    width: 71px;
+    border-radius: 10em;
+    background-color: white;
+    transition: background-color 250ms;
+    cursor: pointer;
+}
+
+.toggle-checkbox:not(:checked)~.toggle-slot {
+    background-color: #07B6BF;
+}
+
+.toggle-button {
+    transform: translate(8px, 6px);
+    position: relative;
+    color: #07B6BF;
+    transition: background-color 250ms, border-color 250ms, transform 500ms cubic-bezier(.26, 2, .46, .71);
+    width: max-content;
+}
+
+.toggle-button::before {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    position: absolute;
+}
+
+.toggle-button::before {
+    content: 'Dark';
+    left: 2px;
+}
+
+.toggle-checkbox:not(:checked)~.toggle-slot .toggle-button::before {
+    content: 'Light';
+    color: white;
+    left: -10px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+}
+
+.toggle-checkbox:not(:checked)~.toggle-slot .toggle-button {
+    transform: translate(45px, 6px);
+}
+
+.sun-icon {
+    position: absolute;
+    background-color: #07B6BF;
+    border-radius: 50%;
+    padding: 3px;
+    height: 28px !important;
+    width: 28px !important;
+}
+
+.sun-icon-wrapper {
+    position: absolute;
+    opacity: 1;
+    transform: translate(46px, -2px) rotate(15deg);
+    transform-origin: 50% 50%;
+    transition: opacity 150ms, transform 500ms cubic-bezier(.26, 2, .46, .71);
+}
+
+.toggle-checkbox:not(:checked)~.toggle-slot .sun-icon-wrapper {
+    opacity: 0;
+    transform: translate(-2px, 5px) rotate(0deg);
+}
+
+.moon-icon {
+    position: absolute;
+    width: max-content;
+    color: white;
+    background-color: white;
+    border-radius: 50%;
+    padding: 2px;
+    height: 28px;
+    width: 28px;
+}
+
+.moon-icon-wrapper {
+    position: absolute;
+    opacity: 0;
+    transform: translate(0px, 0px) rotate(0deg);
+    transform-origin: 50% 50%;
+    transition: opacity 150ms, transform 500ms cubic-bezier(.26, 2.5, .46, .71);
+}
+
+.toggle-checkbox:not(:checked)~.toggle-slot .moon-icon-wrapper {
+    opacity: 1;
+    transform: translate(-2px, 5px) rotate(-15deg);
+}
+
+.form-input {
+    display: flex;
+    height: 40px;
+    padding: 10px 12px;
+    align-items: center;
+    border-radius: 4px;
+    border: 1px solid var(--stroke-silver, #E5E5E5);
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+    background: transparent !important;
+
+}
+
+.menulist::before {
+    position: absolute;
+    top: -11px;
+    right: 19px;
+    display: inline-block;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #ccc;
+    border-left: 10px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.22);
+    /* border-radius: 20px; */
+    content: '';
+}
+
+.menulist::after {
+    position: absolute;
+    top: -9px;
+    right: 20px;
+    display: inline-block;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid #ffffff;
+    border-left: 9px solid transparent;
+    content: '';
+}
+
+.menulist {
+    position: relative;
+}

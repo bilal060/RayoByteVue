@@ -1,0 +1,111 @@
+.sidebar {
+    width: 279px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: display 0.3s ease-in-out;
+    z-index: 2;
+}
+
+.navlink.router-link-active span {
+    background: transparent;
+    color: #07B6BF !important;
+
+}
+
+.navlink.router-link-active svg path {
+    fill: transparent !important;
+    stroke: #07B6BF !important;
+}
+
+
+.sidebar.closed .navlink span {
+    display: none !important;
+
+}
+
+
+.sidebar .navlink span {
+    font-weight: 400;
+}
+
+.sidebar-nav1 {
+    height: 286px;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+.sidebar-nav2 {
+    height: calc(100vh - 288px - 84px - 114px);
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+
+
+/* Scrollbar Styling */
+.dark:where(.sidebar-nav1, .sidebar-nav2)::-webkit-scrollbar {
+    width: 3px;
+}
+
+.dark:where(.sidebar-nav1, .sidebar-nav2)::-webkit-scrollbar-track {
+    background-color: #505050;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.dark:where(.sidebar-nav1, .sidebar-nav2)::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #ebebeb;
+}
+
+:where(.sidebar-nav1, .sidebar-nav2)::-webkit-scrollbar {
+    width: 3px;
+}
+
+:where(.sidebar-nav1, .sidebar-nav2)::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+
+:where(.sidebar-nav1, .sidebar-nav2)::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #505050;
+}
+
+
+@media screen and (width>=1024px) {
+    .sidebar.open {
+        width: 279px !important;
+    }
+
+    .sidebar.closed {
+        max-width: 80px;
+    }
+}
+
+@media screen and (width<1024px) {
+    .sidebar.open {
+        width: 80px !important;
+    }
+
+    .sidebar.closed {
+        width: 0 !important;
+        display: none;
+    }
+
+    .sidebar-bottom {
+        display: none;
+    }
+
+    .navlink span {
+        display: none;
+    }
+
+    .sidebar {
+        width: 80px !important;
+    }
+}
