@@ -3,7 +3,7 @@ import { useDark, useToggle } from '@vueuse/core';
 import { onMounted, ref } from 'vue'
 
 const isDark = useDark();
-let theme = ref()
+let theme = ref();
 onMounted(() => {
     theme = localStorage.getItem('vueuse-color-scheme')
     if (theme === "dark") {
@@ -17,7 +17,7 @@ const toggleDark = useToggle(isDark);
 </script>
 <template>
     <label class="h-20px">
-        <input class='toggle-checkbox' type='checkbox'  />
+        <input class='toggle-checkbox' type='checkbox' @change="toggleDark()" :checked="isDark" />
         <div class='toggle-slot'>
             <div class='sun-icon-wrapper'>
                 <div class="iconify sun-icon" data-icon="feather-sun" data-inline="false">

@@ -9,7 +9,6 @@ import {
 
 const { customClass, option } = defineProps(['customClass', 'option']);
 const selectedPerson = ref(option[0]);
-console.log(option)
 </script>
 
 <template>

@@ -48,14 +48,18 @@ import { Switch } from '@headlessui/vue'
           </div>
 
           <div class="flex ssm:items-center gap-[20px] justify-between ssm:flex-row flex-col">
-            <p class="text-[#505050] font-[700] text-[14px] leading-[20px] dark:text-white">Username:Password</p>
+            <p class="text-[#505050] font-[700] text-[14px] leading-[20px] dark:text-white cursor-pointer"
+              @click="enabled = false">
+              Username:Password</p>
             <Switch v-model="enabled" :class="enabled ? 'bg-[#07B6BF]' : 'bg-[#B4B4B4]'"
               class="relative inline-flex h-[28px] w-[54px] items-center rounded-full">
               <span class="sr-only">Enable notifications</span>
               <span :class="enabled ? 'translate-x-[27px]' : 'translate-x-[1px]'"
                 class="inline-block h-[26px] w-[26px] transform rounded-full bg-white dark:bg-[#0D0D0D] transition" />
             </Switch>
-            <p class="text-[#505050] font-[700] text-[14px] leading-[20px] dark:text-white">IP Authorization</p>
+            <p class="text-[#505050] font-[700] text-[14px] leading-[20px] dark:text-white cursor-pointer"
+              @click="enabled = true">IP
+              Authorization</p>
           </div>
         </div>
         <div
@@ -107,5 +111,4 @@ import { Switch } from '@headlessui/vue'
         </div>
       </WhiteCard>
     </div>
-  </DashboardLayout>
-</template>
+</DashboardLayout></template>
