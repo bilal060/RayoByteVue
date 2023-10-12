@@ -1,12 +1,12 @@
 <script>
 import DashboardLayout from '../components/Dashboard Layout/index.vue'
-import DashboardHeading from '../components/Dashbpard Components/DashboardHeading.vue'
+import DashboardHeading from '../components/Dashboard Components/DashboardHeading.vue'
 import WhiteCard from '../shared/WhiteCard.vue';
 import Button from "../shared/Button.vue";
-import GetApproved from '../components/Dashbpard Components/GetApproved.vue';
-import ProxySetting from '../components/Dashbpard Components/ProxySetting.vue';
-import AddressandAccountSetting from '../components/Dashbpard Components/AddressandAccountSetting.vue';
-import LoginInfoSetting from '../components/Dashbpard Components/LoginInfoSetting.vue';
+import GetApproved from '../components/Dashboard Components/GetApproved.vue';
+import ProxySetting from '../components/Dashboard Components/ProxySetting.vue';
+import AddressandAccountSetting from '../components/Dashboard Components/AddressandAccountSetting.vue';
+import LoginInfoSetting from '../components/Dashboard Components/LoginInfoSetting.vue';
 
 
 export default {

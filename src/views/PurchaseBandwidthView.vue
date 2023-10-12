@@ -1,9 +1,9 @@
 <script>
 import DashboardLayout from '../components/Dashboard Layout/index.vue'
-import DashboardHeading from '../components/Dashbpard Components/DashboardHeading.vue'
+import DashboardHeading from '../components/Dashboard Components/DashboardHeading.vue'
 import WhiteCard from '../shared/WhiteCard.vue';
 import Button from "../shared/Button.vue";
-import GetApproved from '../components/Dashbpard Components/GetApproved.vue';
+import GetApproved from '../components/Dashboard Components/GetApproved.vue';
 
 export default {
 
@@ -261,7 +261,7 @@ export default {
 
 
             <div
-                class="flex items-center bg-[#07b6bf0f] shadow-card dark:shadow-cardDark border-t-[4px] rounded-[8px] py-[18px] sm:px-[55px] px-[25px] border-[#07B6BF] mt-[21px]">
+                class="flex items-center bg-[#07b6bf0f] shadow-card dark:shadow-cardDark border-t-[4px] rounded-b-[8px] rounded-t-[4px] py-[18px] sm:px-[55px] px-[25px] border-[#07B6BF] mt-[21px]">
                 <div class="flex sm:items-center sm:gap-[40px] gap-[20px] xs:flex-row flex-col">
                     <svg class="w-[63px] h-[63px]" width="63" height="63" viewBox="0 0 63 63" fill="none"
                         xmlns="http://www.w3.org/2000/svg">

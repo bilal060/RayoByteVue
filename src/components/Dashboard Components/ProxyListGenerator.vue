@@ -7,6 +7,17 @@ export default {
         WhiteCard,
         Button,
     },
+    data() {
+        return {
+            text: 'curl https://rayobyte.com/ -xleshackelford_outlook_com: laurenc124@la.residential.rayobyte.com: 8000'
+        };
+    },
+    methods: {
+        copy() {
+            this.$refs.myinput.focus();
+            document.execCommand('copy');
+        }
+    }
 };
 </script>
 <script setup>
@@ -81,10 +92,9 @@ const proxyConnection = [
         <div
             class="py-[10px] px-[26px] sm:pe-[60px] shadow-header dark:shadow-headerDark mt-[28px] flex flex-col w-full gap-[22px] items-center justify-between">
             <div class=" flex items-center justify-between w-full gap-5">
-                <p class="text-[#808080] font-[400] text-[14px] leading-[20px] break-words w-[90%]">
-                    curl https://rayobyte.com/ -x
-                    leshackelford_outlook_com:laurenc124@la.residential.rayobyte.com:8000</p>
-                <img src="../../assets/icons/copyIcon.svg" alt="copy" class="cursor-pointer">
+                <input ref="myinput" readonly :value="text"
+                    class="text-[#808080] font-[400] text-[14px] leading-[20px] break-words w-[90%] bg-transparent" />
+                <img src="../../assets/icons/copyIcon.svg" alt="copy" class="cursor-pointer" @click="copy" />
             </div>
         </div>
 
@@ -105,7 +115,7 @@ const proxyConnection = [
                         <span
                             class="text-[#505050] dark:text-white font-[500] text-[12px] leading-[16px] mb-[4px] flex gap-2">
                             Proxy Country
-                            <img src="../../assets/icons/infoIcon.svg" alt="">
+                            <img src="../assets/icons/infoIcon.svg" alt="" />
                         </span>
                         <Listbox v-model="selectedCountry">
                             <div class="relative">
@@ -147,7 +157,7 @@ const proxyConnection = [
                         <span
                             class="text-[#505050] dark:text-white font-[500] text-[12px] leading-[16px] mb-[4px] flex gap-2">
                             Proxy Region
-                            <img src="../../assets/icons/infoIcon.svg" alt="">
+                            <img src="../assets/icons/infoIcon.svg" alt="" />
                         </span>
                         <Listbox v-model="selectedRegion">
                             <div class="relative">
@@ -190,7 +200,7 @@ const proxyConnection = [
                         <span
                             class="text-[#505050] dark:text-white font-[500] text-[12px] leading-[16px] mb-[4px] flex gap-2">
                             Proxy City
-                            <img src="../../assets/icons/infoIcon.svg" alt="">
+                            <img src="../assets/icons/infoIcon.svg" alt="" />
 
                         </span>
                         <Listbox v-model="selectedCity">
@@ -236,7 +246,7 @@ const proxyConnection = [
                         <span
                             class="text-[#505050] dark:text-white font-[500] text-[12px] leading-[16px] mb-[4px] flex gap-2">
                             Proxy ISP
-                            <img src="../../assets/icons/infoIcon.svg" alt="">
+                            <img src="../assets/icons/infoIcon.svg" alt="" />
                         </span>
                         <Listbox v-model="selectedISP">
                             <div class="relative">
@@ -278,7 +288,7 @@ const proxyConnection = [
                         <span
                             class="text-[#505050] dark:text-white font-[500] text-[12px] leading-[16px] mb-[4px] flex gap-2">
                             IP session
-                            <img src="../../assets/icons/infoIcon.svg" alt="">
+                            <img src="../assets/icons/infoIcon.svg" alt="" />
 
                         </span>
                         <Listbox v-model="selectedIP">
@@ -321,7 +331,7 @@ const proxyConnection = [
                         <span
                             class="text-[#505050] dark:text-white font-[500] text-[12px] leading-[16px] mb-[4px] flex gap-2">
                             Connection Type
-                            <img src="../../assets/icons/infoIcon.svg" alt="">
+                            <img src="../assets/icons/infoIcon.svg" alt="" />
 
                         </span>
                         <Listbox v-model="selectedConnection">

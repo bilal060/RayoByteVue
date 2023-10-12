@@ -174,3 +174,88 @@ input[type=number]::-webkit-inner-spin-button {
 .menulist a:first-child {
     border-radius: 8px 8px 0 0 !important;
 }
+
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    color: var(--cta-2, #07B6BF);
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    background-color: transparent !important;
+}
+
+.p-paginator-pages {
+    display: flex;
+    gap: 21px;
+    align-items: center;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page {
+    min-width: unset !important;
+    margin: 0 !important;
+    height: 18px !important;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page.p-link:focus {
+    box-shadow: unset;
+    background: transparent !important;
+}
+
+.p-datatable .p-paginator-bottom {
+    border: 0 !important;
+}
+
+.p-paginator {
+    border-radius: 0 0 8px 8px !important;
+    background-color: transparent !important;
+}
+
+.dark .p-paginator {
+    background-color: #0D0D0D !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+.p-datatable-wrapper {
+    border-radius: 8px !important;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.10);
+    padding-bottom: 46px;
+}
+/* .p-datatable .p-datatable-tbody tr:last-child td{
+    border: 0 !important;
+} */
+.dark .p-datatable .p-datatable-tbody>tr>td {
+    background-color: #0D0D0D !important;
+    border-color: #343434 !important;
+    color: white;
+}
+
+.dark .p-datatable .p-datatable-thead>tr>th {
+    color: white !important;
+    border-color: #343434 !important;
+}
+
+.p-paginator-element.p-link.p-disabled {
+    color: #B4B4B4 !important;
+}
+
+:is(.p-paginator-next, .p-paginator-prev).p-paginator-element.p-link.p-disabled {
+    color: #B4B4B4 !important;
+}
+
+:is(.p-paginator-next, .p-paginator-prev).p-paginator-element.p-link {
+    color: #07B6BF !important;
+}
+
+.p-paginator-element.p-link:hover {
+    background: none !important;
+}
+
+.p-paginator-element.p-link:focus {
+    box-shadow: none !important;
+}
+
+.p-paginator-last,
+.p-paginator-first.p-paginator-element.p-link {
+    display: none !important;
+}

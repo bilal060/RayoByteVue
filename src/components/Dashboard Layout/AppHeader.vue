@@ -1,10 +1,18 @@
 <script>
 import DropDown from '../../shared/DropDown.vue';
 import Button from '../../shared/Button.vue';
-import ThemeToggle from '../Dashbpard Components/ThemeToggle.vue';
-import SearchHeader from '../Dashbpard Components/SearchHeader.vue'
+import ThemeToggle from '../Dashboard Components/ThemeToggle.vue';
+import SearchHeader from '../Dashboard Components/SearchHeader.vue'
 export default {
-    components: { DropDown }
+    components: { DropDown },
+    data() {
+        return {
+            approved: '',
+        };
+    },
+    mounted() {
+        this.approved = localStorage.getItem('approved');
+    },
 };
 
 </script>
@@ -20,7 +28,7 @@ import { MenuItem } from '@headlessui/vue'
         <SearchHeader />
 
 
-        <Button v-if="$route.path === '/dashboard'"
+        <Button v-if="approved === false"
             :customClass="'hidden md:flex py-[8px] px-[16px] rounded-[4px] items-center justify-center text-white bg-[#07B6BF] w-full text-[15px] font-[600] h-[30px] max-w-[209px]'">Request
             bigger trial
         </Button>

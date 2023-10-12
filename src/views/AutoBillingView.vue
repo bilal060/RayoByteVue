@@ -1,9 +1,9 @@
 <script>
 import DashboardLayout from '../components/Dashboard Layout/index.vue'
-import DashboardHeading from '../components/Dashbpard Components/DashboardHeading.vue'
+import DashboardHeading from '../components/Dashboard Components/DashboardHeading.vue'
 import WhiteCard from '../shared/WhiteCard.vue';
 import Button from "../shared/Button.vue";
-import GetApproved from '../components/Dashbpard Components/GetApproved.vue';
+import GetApproved from '../components/Dashboard Components/GetApproved.vue';
 const enabled = ref(false)
 
 export default {
@@ -14,6 +14,14 @@ export default {
         WhiteCard,
         Button,
         GetApproved,
+    },
+    data() {
+        return {
+            approved: '',
+        };
+    },
+    mounted() {
+        this.approved = localStorage.getItem('approved');
     },
 };
 </script>
@@ -36,7 +44,8 @@ import { Switch } from '@headlessui/vue'
                 </div>
             </WhiteCard>
             <GetApproved />
-            <div class="flex min900:flex-row flex-col py-6 sm:py-[50px]  gap-[20px] justify-center blur-[4px]">
+            <div class="flex min900:flex-row flex-col py-6 sm:py-[50px]  gap-[20px] justify-center"
+                :class="approved ? '' : 'blur-[4px]'">
                 <WhiteCard :customClass="'min900:w-1/2 bg-gray-100 flex flex-col items-center'">
                     <div class="border-b border-[#EBEFF2] dark:border-[#343434] pt-[17px] pb-[14px] px-[20px] w-full">
                         <p class="text-[#505050] dark:text-white font-[700] text-[14px] leading-[20px]">
@@ -109,8 +118,8 @@ import { Switch } from '@headlessui/vue'
                     </div>
                 </WhiteCard>
             </div>
-            <div class="flex items-center bg-[#b4b4b40f] shadow-card dark:shadow-cardDark border-t-[4px] rounded-[8px] py-[18px] sm:px-[55px] px-[25px] blur-[4px]"
-                :class="enabled ? 'border-[#07B6BF]' : 'border-[#B4B4B4] dark:border-[#343434]'">
+            <div class="flex items-center bg-[#b4b4b40f] shadow-card dark:shadow-cardDark border-t-[4px] rounded-b-[8px] rounded-t-[4px] py-[18px] sm:px-[55px] px-[25px]"
+                :class="enabled ? 'border-[#07B6BF]' : 'border-[#B4B4B4] dark:border-[#343434]', approved ? '' : 'blur-[4px]'">
                 <div class="flex sm:items-center sm:gap-[40px] gap-[20px] xs:flex-row flex-col">
                     <svg class="w-[64px] h-[64px]" width="63" height="63" viewBox="0 0 63 63" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
@@ -132,16 +141,13 @@ import { Switch } from '@headlessui/vue'
                             <path d="M17 17H46V46H17V17Z" :class="enabled ? 'fill-[#07B6BF]' : 'fill-[#B4B4B4]'" />
                         </g>
                     </svg>
-                    <p v-if="!enabled" class="text-[#505050] dark:text-white font-[400] text-[16px] leading-[24px] w-[80%]">
+                    <p v-if="!enabled" class="text-[#505050] dark:text-white font-[400] text-[16px] leading-[24px] w-[70%]">
                         Approve the setting and billing</p>
-                    <p v-else class="text-[#505050] dark:text-white font-[400] text-[16px] leading-[24px] w-[80%]">With the
+                    <p v-else class="text-[#505050] dark:text-white font-[400] text-[16px] leading-[24px] w-[70%]">With the
                         settings we showed here, we will charge <b>$20</b> straight away and auto refill the same amount
                         every time your balance falls bellow <b>1GB</b>.</p>
                 </div>
-
             </div>
-
-
         </div>
     </DashboardLayout>
 </template>

@@ -1,11 +1,11 @@
 <script>
 import DashboardLayout from '../components/Dashboard Layout/index.vue'
-import DashboardHeading from '../components/Dashbpard Components/DashboardHeading.vue'
-import LineChart from '../components/Dashbpard Components/LineChart.vue';
+import DashboardHeading from '../components/Dashboard Components/DashboardHeading.vue'
+import LineChart from '../components/Dashboard Components/LineChart.vue';
 import WhiteCard from '../shared/WhiteCard.vue';
 import Button from "../shared/Button.vue";
 import SelectVue from "../shared/SelectVue.vue";
-import GetApproved from '../components/Dashbpard Components/GetApproved.vue';
+import GetApproved from '../components/Dashboard Components/GetApproved.vue';
 
 const people = [
   { name: '30 days' },
@@ -111,4 +111,5 @@ import { Switch } from '@headlessui/vue'
         </div>
       </WhiteCard>
     </div>
-</DashboardLayout></template>
+  </DashboardLayout>
+</template>

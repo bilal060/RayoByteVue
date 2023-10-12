@@ -7,12 +7,27 @@ export default {
         WhiteCard,
         Button,
     },
+    data() {
+        return {
+            approved: '',
+        };
+    },
+    methods: {
+        getApproved() {
+            localStorage.setItem('approved', true)
+            this.approved = true;
+        },
+    },
+    mounted() {
+        this.approved = localStorage.getItem('approved');
+    },
 };
+
 </script>
 <template>
-    <WhiteCard :customClass="'mt-[20px]'">
+    <WhiteCard :customClass="'mt-[20px]'" v-if="!approved">
         <div
-            class=" py-[17px] px-[24px] flex justify-between items-center gap-[50px] md:gap-[70px] lg:gap-[84px] md:flex-row flex-col border-t-4 border-[#d58b3661] rounded-[8px]">
+            class=" py-[17px] px-[24px] flex justify-between items-center gap-[50px] md:gap-[70px] lg:gap-[84px] md:flex-row flex-col border-t-4 border-[#d58b3661] rounded-b-[8px] rounded-t-[4px]">
             <div class="flex xs:flex-row flex-col justify-between items-start md:items-center gap-[20px] sm:gap-[34px]">
                 <img src="../../assets/icons/dashboardAlert.svg" alt="">
                 <div>
@@ -32,8 +47,8 @@ export default {
                 </div>
             </div>
 
-            <Button
-                :customClass="' flex py-[8px] px-[16px] rounded-[4px] items-center justify-center text-white transition-all hover:bg-black hover:border-2 border-[#07B6BF] bg-[#07B6BF] text-[15px] font-[600] sm:h-[40px] md:max-w-[148px] w-full'">
+            <Button @click="getApproved()"
+                :customClass="'flex py-[7px] px-[16px] rounded-[4px] items-center justify-center text-white transition-all hover:bg-black border-2 border-[#07B6BF] bg-[#07B6BF] text-[15px] font-[600] sm:h-[40px] md:max-w-[148px] w-full'">
                 Get approved
             </Button>
         </div>
