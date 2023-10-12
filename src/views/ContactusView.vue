@@ -22,9 +22,9 @@ export default {
 
             <WhiteCard :customClass="'mt-[20px]'">
                 <div class="flex flex-col justify-center items-center gap-[15px] pt-[28px] pb-[31px] px-[20px]">
-                    <p class="text-[#505050] font-[700] text-[14px] leading-[20px] dark:text-white text-center">
+                    <p class="text-[#505050] font-[700] text-[16px] leading-[27px] dark:text-white text-center">
                         Welcome to the Rayobyte Dashboard</p>
-                    <p class="text-[#B4B4B4] font-[500] text-[11px] leading-[18px] text-center sm:w-3/4">Hi, my name is
+                    <p class="text-[#808080] font-[400] text-[14px] leading-[20px] text-center sm:w-3/4">Hi, my name is
                         Lauren and I
                         am the Product Owner of our residential proxy product line. I am responsible to making sure you have
                         the best customer experience possible. I encourage you to use the appropriate form or emails below

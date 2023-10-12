@@ -30,6 +30,7 @@ import {
 } from '@headlessui/vue'
 import { ref, watch } from 'vue'
 import { City } from 'country-state-city';
+import Tooltip from 'primevue/tooltip';
 
 const selectedCountry = ref("Random Country");
 const selectedRegion = ref("Random Region");
@@ -97,7 +98,6 @@ const proxyConnection = [
                 <img src="../../assets/icons/copyIcon.svg" alt="copy" class="cursor-pointer" @click="copy" />
             </div>
         </div>
-
     </WhiteCard>
     <WhiteCard :customClass="'flex flex-col items-start mt-[21px]'">
         <div class="border-b border-[#EBEFF2] dark:border-[#343434] pt-[17px] pb-[18px] px-[24px] w-full">
@@ -112,22 +112,20 @@ const proxyConnection = [
             <form action="">
                 <div class="flex sm:flex-row flex-col items-center gap-x-[48px] gap-y-[30px] mb-[12px] flex-wrap">
                     <div class="md:max-w-[45%] lg:max-w-[46%] xl:max-w-[29%] w-full">
+
                         <span
                             class="text-[#505050] dark:text-white font-[500] text-[12px] leading-[16px] mb-[4px] flex gap-2">
                             Proxy Country
-                            <img src="../assets/icons/infoIcon.svg" alt="" />
+                            <img src="../../assets/icons/infoIcon.svg" alt=""
+                                v-tooltip.bottom="{ value: `<h4 class='text-[#505050] dark:text-white text-[10px] font-[500] leading-[18px]'>Select the country from which proxies will be provided to you</h4>`, escape: true, class: 'custom-tooltip' }"
+                                placeholder="Bottom" />
                         </span>
                         <Listbox v-model="selectedCountry">
                             <div class="relative">
                                 <ListboxButton
                                     class="rounded-[4px] border pe-[30px] border-[#E5E5E5] dark:border-[#343434] py-[10px] px-[12px] relative  cursor-default  text-[#B4B4B4] bg-transparent font-[400] text-[14px] leading-[20px] flex items-center gap-2  w-full justify-between">
                                     <span class="block truncate">{{ selectedCountry }}</span>
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1.61741 0.75L6.88259 6.00371L12.1478 0.75L13.7652 2.36741L6.88259 9.25L0 2.36741L1.61741 0.75Z"
-                                            fill="#505050" fill-opacity="0.7" />
-                                    </svg>
+                                    <img src="../../assets/icons/arrowDownIcon.svg" alt="arrowdown" />
                                 </ListboxButton>
                                 <transition leave-active-class="transition duration-100 ease-in"
                                     leave-from-class="opacity-100" leave-to-class="opacity-0">
@@ -157,19 +155,14 @@ const proxyConnection = [
                         <span
                             class="text-[#505050] dark:text-white font-[500] text-[12px] leading-[16px] mb-[4px] flex gap-2">
                             Proxy Region
-                            <img src="../assets/icons/infoIcon.svg" alt="" />
+                            <img src="../../assets/icons/infoIcon.svg" alt="" />
                         </span>
                         <Listbox v-model="selectedRegion">
                             <div class="relative">
                                 <ListboxButton
                                     class="rounded-[4px] border pe-[30px] border-[#E5E5E5] dark:border-[#343434] py-[10px] px-[12px] relative  cursor-default  text-[#B4B4B4] bg-transparent font-[400] text-[14px] leading-[20px] flex items-center gap-2  w-full justify-between">
                                     <span class="block truncate">{{ selectedRegion }}</span>
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1.61741 0.75L6.88259 6.00371L12.1478 0.75L13.7652 2.36741L6.88259 9.25L0 2.36741L1.61741 0.75Z"
-                                            fill="#505050" fill-opacity="0.7" />
-                                    </svg>
+                                    <img src="../../assets/icons/arrowDownIcon.svg" alt="arrowdown" />
                                 </ListboxButton>
                                 <transition leave-active-class="transition duration-100 ease-in"
                                     leave-from-class="opacity-100" leave-to-class="opacity-0">
@@ -200,7 +193,7 @@ const proxyConnection = [
                         <span
                             class="text-[#505050] dark:text-white font-[500] text-[12px] leading-[16px] mb-[4px] flex gap-2">
                             Proxy City
-                            <img src="../assets/icons/infoIcon.svg" alt="" />
+                            <img src="../../assets/icons/infoIcon.svg" alt="" />
 
                         </span>
                         <Listbox v-model="selectedCity">
@@ -208,12 +201,7 @@ const proxyConnection = [
                                 <ListboxButton
                                     class="rounded-[4px] border pe-[30px] border-[#E5E5E5] dark:border-[#343434] py-[10px] px-[12px] relative  cursor-default  text-[#B4B4B4] bg-transparent font-[400] text-[14px] leading-[20px] flex items-center gap-2  w-full justify-between">
                                     <span class="block truncate">{{ selectedCity }}</span>
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1.61741 0.75L6.88259 6.00371L12.1478 0.75L13.7652 2.36741L6.88259 9.25L0 2.36741L1.61741 0.75Z"
-                                            fill="#505050" fill-opacity="0.7" />
-                                    </svg>
+                                    <img src="../../assets/icons/arrowDownIcon.svg" alt="arrowdown" />
                                 </ListboxButton>
                                 <transition leave-active-class="transition duration-100 ease-in"
                                     leave-from-class="opacity-100" leave-to-class="opacity-0">
@@ -246,19 +234,14 @@ const proxyConnection = [
                         <span
                             class="text-[#505050] dark:text-white font-[500] text-[12px] leading-[16px] mb-[4px] flex gap-2">
                             Proxy ISP
-                            <img src="../assets/icons/infoIcon.svg" alt="" />
+                            <img src="../../assets/icons/infoIcon.svg" alt="" />
                         </span>
                         <Listbox v-model="selectedISP">
                             <div class="relative">
                                 <ListboxButton
                                     class="rounded-[4px] pe-[30px] border border-[#E5E5E5] dark:border-[#343434] py-[10px] px-[12px] relative  cursor-default  text-[#B4B4B4] bg-transparent font-[400] text-[14px] leading-[20px] flex items-center gap-2  w-full justify-between">
                                     <span class="block truncate">{{ selectedISP }}</span>
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1.61741 0.75L6.88259 6.00371L12.1478 0.75L13.7652 2.36741L6.88259 9.25L0 2.36741L1.61741 0.75Z"
-                                            fill="#505050" fill-opacity="0.7" />
-                                    </svg>
+                                    <img src="../../assets/icons/arrowDownIcon.svg" alt="arrowdown" />
                                 </ListboxButton>
                                 <transition leave-active-class="transition duration-100 ease-in"
                                     leave-from-class="opacity-100" leave-to-class="opacity-0">
@@ -288,7 +271,7 @@ const proxyConnection = [
                         <span
                             class="text-[#505050] dark:text-white font-[500] text-[12px] leading-[16px] mb-[4px] flex gap-2">
                             IP session
-                            <img src="../assets/icons/infoIcon.svg" alt="" />
+                            <img src="../../assets/icons/infoIcon.svg" alt="" />
 
                         </span>
                         <Listbox v-model="selectedIP">
@@ -296,12 +279,7 @@ const proxyConnection = [
                                 <ListboxButton
                                     class="rounded-[4px] pe-[30px] border border-[#E5E5E5] dark:border-[#343434] py-[10px] px-[12px] relative  cursor-default  text-[#B4B4B4] bg-transparent font-[400] text-[14px] leading-[20px] flex items-center gap-2  w-full justify-between">
                                     <span class="block truncate">{{ selectedIP }}</span>
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1.61741 0.75L6.88259 6.00371L12.1478 0.75L13.7652 2.36741L6.88259 9.25L0 2.36741L1.61741 0.75Z"
-                                            fill="#505050" fill-opacity="0.7" />
-                                    </svg>
+                                    <img src="../../assets/icons/arrowDownIcon.svg" alt="arrowdown" />
                                 </ListboxButton>
                                 <transition leave-active-class="transition duration-100 ease-in"
                                     leave-from-class="opacity-100" leave-to-class="opacity-0">
@@ -331,7 +309,7 @@ const proxyConnection = [
                         <span
                             class="text-[#505050] dark:text-white font-[500] text-[12px] leading-[16px] mb-[4px] flex gap-2">
                             Connection Type
-                            <img src="../assets/icons/infoIcon.svg" alt="" />
+                            <img src="../../assets/icons/infoIcon.svg" alt="" />
 
                         </span>
                         <Listbox v-model="selectedConnection">
@@ -339,12 +317,7 @@ const proxyConnection = [
                                 <ListboxButton
                                     class="rounded-[4px] pe-[30px] border border-[#E5E5E5] dark:border-[#343434] py-[10px] px-[12px] relative  cursor-default  text-[#B4B4B4] bg-transparent font-[400] text-[14px] leading-[20px] flex items-center gap-2  w-full justify-between">
                                     <span class="block truncate">{{ selectedConnection }}</span>
-                                    <svg width="14" height="10" viewBox="0 0 14 10" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M1.61741 0.75L6.88259 6.00371L12.1478 0.75L13.7652 2.36741L6.88259 9.25L0 2.36741L1.61741 0.75Z"
-                                            fill="#505050" fill-opacity="0.7" />
-                                    </svg>
+                                    <img src="../../assets/icons/arrowDownIcon.svg" alt="arrowdown" />
                                 </ListboxButton>
                                 <transition leave-active-class="transition duration-100 ease-in"
                                     leave-from-class="opacity-100" leave-to-class="opacity-0">

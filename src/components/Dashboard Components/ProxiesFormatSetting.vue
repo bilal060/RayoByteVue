@@ -57,12 +57,8 @@ const selectedFormat = ref(format[0].name);
                             <ListboxButton
                                 class="rounded-[4px] pe-[30px] border border-[#E5E5E5] dark:border-[#343434] py-[10px] px-[12px] relative  cursor-default  text-[#B4B4B4] bg-transparent font-[400] text-[14px] leading-[20px] flex items-center gap-2  w-full justify-between">
                                 <span class="block truncate">{{ selectedNoOfIP }}</span>
-                                <svg width="14" height="10" viewBox="0 0 14 10" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M1.61741 0.75L6.88259 6.00371L12.1478 0.75L13.7652 2.36741L6.88259 9.25L0 2.36741L1.61741 0.75Z"
-                                        fill="#505050" fill-opacity="0.7" />
-                                </svg>
+                                <img src="../../assets/icons/arrowDownIcon.svg" alt="arrowdown" />
+
                             </ListboxButton>
                             <transition leave-active-class="transition duration-100 ease-in" leave-from-class="opacity-100"
                                 leave-to-class="opacity-0">
@@ -97,12 +93,8 @@ const selectedFormat = ref(format[0].name);
                             <ListboxButton
                                 class="rounded-[4px] pe-[30px] border border-[#E5E5E5] dark:border-[#343434] py-[10px] px-[12px] relative  cursor-default  text-[#B4B4B4] bg-transparent font-[400] text-[14px] leading-[20px] flex items-center gap-2  w-full justify-between">
                                 <span class="block truncate">{{ selectedFormat }}</span>
-                                <svg width="14" height="10" viewBox="0 0 14 10" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M1.61741 0.75L6.88259 6.00371L12.1478 0.75L13.7652 2.36741L6.88259 9.25L0 2.36741L1.61741 0.75Z"
-                                        fill="#505050" fill-opacity="0.7" />
-                                </svg>
+                                <img src="../../assets/icons/arrowDownIcon.svg" alt="arrowdown" />
+
                             </ListboxButton>
                             <transition leave-active-class="transition duration-100 ease-in" leave-from-class="opacity-100"
                                 leave-to-class="opacity-0">

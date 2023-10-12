@@ -17,11 +17,20 @@ export default {
     },
     data() {
         return {
-            approved: '',
+            approved: false,
         };
     },
     mounted() {
-        this.approved = localStorage.getItem('approved');
+        let approvement = localStorage.getItem('approved');
+        if (approvement !== null) {
+            approvement === 'true' ? this.approved = true : this.approved = false;
+        }
+    },
+    methods: {
+        getApproved() {
+            this.approved = true;
+            localStorage.setItem('approved', this.approved)
+        },
     },
 };
 </script>
@@ -43,8 +52,8 @@ import { Switch } from '@headlessui/vue'
                     </p>
                 </div>
             </WhiteCard>
-            <GetApproved />
-            <div class="flex min900:flex-row flex-col py-6 sm:py-[50px]  gap-[20px] justify-center"
+            <GetApproved @getApproved="getApproved" :approved="approved" />
+            <div class="flex min900:flex-row flex-col py-[20px] sm:py-[20px]  gap-[20px] justify-center"
                 :class="approved ? '' : 'blur-[4px]'">
                 <WhiteCard :customClass="'min900:w-1/2 bg-gray-100 flex flex-col items-center'">
                     <div class="border-b border-[#EBEFF2] dark:border-[#343434] pt-[17px] pb-[14px] px-[20px] w-full">
@@ -61,7 +70,7 @@ import { Switch } from '@headlessui/vue'
                             </label>
                             <div class="flex items-center gap-[10px] mt-[10px]">
                                 <input type="number" name="autorefil" id="autorefil"
-                                    class="form-input min900:w-auto w-full"><span>GB</span>
+                                    class="form-input min900:w-auto w-full bg-transparent dark:border-[#343434]"><span>GB</span>
                             </div>
                         </div>
                         <div class="form-control mb-[25px]">
@@ -69,7 +78,7 @@ import { Switch } from '@headlessui/vue'
                                 class="text-[#505050] dark:text-white font-[500] text-[12px] leading-[15px] ">
                                 Number of GB i would like to add to my account </label>
                             <div class="flex items-center gap-[10px] mt-[10px]">
-                                <input type="number" name="numofgb" id="numofgb" class="form-input min900:w-auto w-full">
+                                <input type="number" name="numofgb" id="numofgb" class="form-input min900:w-auto w-full bg-transparent dark:border-[#343434]">
                                 <span>GB</span>
                             </div>
                         </div>
@@ -79,8 +88,8 @@ import { Switch } from '@headlessui/vue'
                                 Select a payment method</label>
                             <div class="flex items-center gap-[10px] mt-[10px]">
                                 <input type="number" name="paymentmethod" id="paymentmethod"
-                                    class="form-input min900:w-auto w-full">
-                                <span>GB</span>
+                                placeholder="XXXXX XXXXX XXXXX 11222"
+                                    class="form-input min900:w-auto sm:w-[95%] w-full bg-transparent dark:border-[#343434]">
                             </div>
                         </div>
                     </div>
@@ -109,7 +118,7 @@ import { Switch } from '@headlessui/vue'
                                 class="relative inline-flex h-[28px] w-[54px] items-center rounded-full">
                                 <span class="sr-only">Enable notifications</span>
                                 <span :class="enabled ? 'translate-x-[26px]' : 'translate-x-[1px]'"
-                                    class="inline-block h-[26px] w-[26px] transform rounded-full bg-white dark:bg-[#0D0D0D] transition" />
+                                    class="inline-block h-[26px] w-[27px] transform rounded-full bg-white dark:bg-[#0D0D0D] transition" />
                             </Switch>
                             <p class="text-[#505050] dark:text-white font-[700] text-[14px] leading-[20px]">
                                 Enable auto billing
@@ -118,8 +127,8 @@ import { Switch } from '@headlessui/vue'
                     </div>
                 </WhiteCard>
             </div>
-            <div class="flex items-center bg-[#b4b4b40f] shadow-card dark:shadow-cardDark border-t-[4px] rounded-b-[8px] rounded-t-[4px] py-[18px] sm:px-[55px] px-[25px]"
-                :class="enabled ? 'border-[#07B6BF]' : 'border-[#B4B4B4] dark:border-[#343434]', approved ? '' : 'blur-[4px]'">
+            <div class="flex items-center  shadow-card dark:shadow-cardDark border-t-[4px] rounded-b-[8px] rounded-t-[4px] py-[18px] sm:px-[55px] px-[25px]"
+                :class="enabled ? 'border-[#07B6BF] bg-[#07b6bf0f]' : 'bg-[#b4b4b40f] border-[#B4B4B4] dark:border-[#343434]', approved ? '' : 'blur-[4px]'">
                 <div class="flex sm:items-center sm:gap-[40px] gap-[20px] xs:flex-row flex-col">
                     <svg class="w-[64px] h-[64px]" width="63" height="63" viewBox="0 0 63 63" fill="none"
                         xmlns="http://www.w3.org/2000/svg">

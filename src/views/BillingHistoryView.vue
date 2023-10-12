@@ -16,11 +16,20 @@ export default {
     },
     data() {
         return {
-            approved: '',
+            approved: false,
         };
     },
     mounted() {
-        this.approved = localStorage.getItem('approved');
+        let approvement = localStorage.getItem('approved');
+        if (approvement !== null) {
+            approvement === 'true' ? this.approved = true : this.approved = false;
+        }
+    },
+    methods: {
+        getApproved() {
+            this.approved = true;
+            localStorage.setItem('approved', this.approved)
+        },
     },
 };
 </script>
@@ -29,23 +38,21 @@ import { ref, onMounted } from 'vue';
 import { ProductService } from '../service/ProductService';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
+import { Menu, MenuButton, MenuItems } from '@headlessui/vue'
+
+const products = ref();
+const filter = ref();
 
 onMounted(() => {
     ProductService.getProductsMini().then((data) => (products.value = data));
 });
-
-const products = ref();
-
 </script>
-
-
 <template>
     <DashboardLayout>
         <div>
             <DashboardHeading heading="Billing History Page" />
-
             <WhiteCard :customClass="'mt-[20px]'">
-                <div class="flex flex-col justify-center items-center gap-[8px] px-[97px] py-[32px]">
+                <div class="flex flex-col justify-center items-center gap-[8px] px-[32px] sm:px-[97px] py-[32px]">
                     <p class="text-[#505050] font-[700] text-[14px] leading-[20px] dark:text-white text-center">
                         Welcome to your Billing History Page</p>
                     <p class="text-[#B4B4B4] font-[500] text-[11px] leading-[18px] text-center">On this page you can track
@@ -54,17 +61,68 @@ const products = ref();
                     </p>
                 </div>
             </WhiteCard>
+            <GetApproved @getApproved="getApproved" :approved="approved" v-if="!approved" />
+            <WhiteCard :customClass="'mt-[20px]'" v-else>
+                <div
+                    class="border-b border-[#EBEFF2] dark:border-[#343434] pt-[17px] pb-[18px] px-[24px] w-full flex items-center justify-between">
+                    <div>
+                        <p class="text-[#505050] dark:text-white font-[700] text-[14px] leading-[20px]">
+                            Invoices List
+                        </p>
+                        <p class="text-[#B4B4B4] font-[500] text-[11px] leading-[18px]">
+                            You can get your all billing history from here.
+                        </p>
+                    </div>
+                    <div>
+                        <Menu as="div" class="relative inline-block text-left">
+                            <div>
+                                <MenuButton
+                                    class="text-[#707683] text-[12px] font-[400] leading-[18px] flex items-center gap-[9px]"
+                                    :class="filter === 'unpaid' ? 'text-[#EE3889]' : 'text-[#07B6BF]'">
+                                    Filter
+                                    <svg width="7" height="3" viewBox="0 0 7 3" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3.5 3L0.468911 -9.41288e-08L6.53109 4.35844e-07L3.5 3Z" fill="#B4B4B4" />
+                                    </svg>
 
-            <GetApproved />
+                                </MenuButton>
+                            </div>
 
-            <WhiteCard :customClass="'mt-[20px]'">
-                <div class="border-b border-[#EBEFF2] dark:border-[#343434] pt-[17px] pb-[18px] px-[24px] w-full">
-                    <p class="text-[#505050] dark:text-white font-[700] text-[14px] leading-[20px]">
-                        Invoices List
-                    </p>
-                    <p class="text-[#B4B4B4] font-[500] text-[11px] leading-[18px]">
-                        You can get your all billing history from here.
-                    </p>
+                            <transition enter-active-class="transition ease-out duration-100"
+                                enter-from-class="transform opacity-0 scale-95"
+                                enter-to-class="transform opacity-100 scale-100"
+                                leave-active-class="transition ease-in duration-75"
+                                leave-from-class="transform opacity-100 scale-100"
+                                leave-to-class="transform opacity-0 scale-95">
+                                <MenuItems
+                                    class="absolute right-0 md:right-auto md:left-0  top-5 z-10 w-max origin-top-right rounded-[8px] bg-white shadow-card dark:shadow-cardDark ring-1 ring-[#0000001f] dark:ring-[#343434] focus:outline-none ">
+                                    <div class="rounded-[8px] dark:bg-[#0D0D0D] flex flex-col gap-[10px] px-[6px] py-[9px]">
+                                        <p @click="filter = 'unpaid'"
+                                            class=" cursor-pointer text-[#EE3889] dark:bg-[#0D0D0D] dark:text-[#b4b4b4b4] flex gap-[6px] items-center text-[12px] font-[500] leading-[18px]">
+                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M10.6667 1.33333V10.6667H1.33333V1.33333H10.6667ZM10.6667 0H1.33333C0.6 0 0 0.6 0 1.33333V10.6667C0 11.4 0.6 12 1.33333 12H10.6667C11.4 12 12 11.4 12 10.6667V1.33333C12 0.6 11.4 0 10.6667 0Z"
+                                                    fill="#EE3889" />
+                                            </svg>
+
+                                            Unpaid
+                                        </p>
+                                        <p @click="filter = 'paid'"
+                                            class=" cursor-pointer text-[#07B6BF] dark:bg-[#0D0D0D] dark:text-[#b4b4b4b4] flex gap-[6px] items-center text-[12px] font-[500] leading-[18px]">
+                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M10.6667 1.33333V10.6667H1.33333V1.33333H10.6667ZM10.6667 0H1.33333C0.6 0 0 0.6 0 1.33333V10.6667C0 11.4 0.6 12 1.33333 12H10.6667C11.4 12 12 11.4 12 10.6667V1.33333C12 0.6 11.4 0 10.6667 0Z"
+                                                    fill="#07B6BF" />
+                                            </svg>
+                                            Paid
+                                        </p>
+                                    </div>
+                                </MenuItems>
+                            </transition>
+                        </Menu>
+                    </div>
                 </div>
                 <div class="px-[24px] py-[20px]">
                     <div class="rounded-8">
@@ -115,7 +173,6 @@ const products = ref();
                             </Column>
                         </DataTable>
                     </div>
-                    <!-- <Paginator :rows="5" :totalRecords="products?.length" v-model:products="products" ></Paginator> -->
                 </div>
             </WhiteCard>
 

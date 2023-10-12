@@ -8,7 +8,6 @@ import ProxyListGenerator from '../components/Dashboard Components/ProxyListGene
 import ProxiesFormatSetting from '../components/Dashboard Components/ProxiesFormatSetting.vue';
 
 export default {
-
     components: {
         DashboardLayout,
         DashboardHeading,
@@ -18,6 +17,23 @@ export default {
         ProxyListGenerator,
         ProxiesFormatSetting
     },
+    data() {
+        return {
+            approved: false,
+        };
+    },
+     mounted() {
+        let approvement = localStorage.getItem('approved');
+        if (approvement !== null) {
+            approvement === 'true' ? this.approved = true : this.approved = false;
+        }
+    },
+    methods: {
+        getApproved() {
+            this.approved = true;
+            localStorage.setItem('approved', this.approved)
+        },
+    },
 };
 </script>
 
@@ -25,7 +41,7 @@ export default {
     <DashboardLayout>
         <div>
             <DashboardHeading heading="Proxy List Generator" />
-            <GetApproved />
+            <GetApproved @getApproved="getApproved" :approved="approved" />
             <ProxyListGenerator />
             <ProxiesFormatSetting />
         </div>

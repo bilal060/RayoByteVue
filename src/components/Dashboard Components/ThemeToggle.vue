@@ -6,12 +6,6 @@ const isDark = useDark();
 let theme = ref();
 onMounted(() => {
     theme = localStorage.getItem('vueuse-color-scheme')
-    if (theme === "dark") {
-        console.log("dark")
-    }
-    else {
-        return
-    }
 })
 const toggleDark = useToggle(isDark);
 </script>

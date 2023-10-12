@@ -14,6 +14,23 @@ export default {
         Button,
         GetApproved,
     },
+    data() {
+        return {
+            approved: false,
+        };
+    },
+     mounted() {
+        let approvement = localStorage.getItem('approved');
+        if (approvement !== null) {
+            approvement === 'true' ? this.approved = true : this.approved = false;
+        }
+    },
+    methods: {
+        getApproved() {
+            this.approved = true;
+            localStorage.setItem('approved', this.approved)
+        },
+    },
 };
 </script>
 
@@ -68,7 +85,7 @@ const filteredPeople = computed(() =>
     <DashboardLayout>
         <div>
             <DashboardHeading heading="Domains List" />
-            <GetApproved />
+            <GetApproved @getApproved="getApproved" :approved="approved" />
             <WhiteCard :customClass="'mt-[20px]'">
                 <div class="border-b border-[#EBEFF2] dark:border-[#343434] py-[17px] px-[24px] ">
                     <p class="text-[#505050] font-[700] text-[14px] leading-[20px] dark:text-white mb-[3px]">
@@ -88,14 +105,9 @@ const filteredPeople = computed(() =>
                     <Listbox v-model="selectedPerson" class="max-w-[394px]">
                         <div class="relative">
                             <ListboxButton
-                                class="rounded-[4px] border border-[#E5E5E5] dark:border-[#343434] py-[10px] px-[12px] relative  cursor-default  text-[#07B6BF] bg-transparent font-[500] text-[12px] leading-[18px] flex items-center gap-2  w-full justify-between">
+                                class="rounded-[4px] border border-[#E5E5E5] dark:border-[#343434] py-[10px] px-[12px] relative  cursor-default  text-[#B4B4B4] bg-transparent font-[500] text-[12px] leading-[18px] flex items-center gap-2  w-full justify-between">
                                 <span class="block truncate">{{ selectedPerson.name }}</span>
-                                <svg width="14" height="10" viewBox="0 0 14 10" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M1.61741 0.75L6.88259 6.00371L12.1478 0.75L13.7652 2.36741L6.88259 9.25L0 2.36741L1.61741 0.75Z"
-                                        fill="#505050" fill-opacity="0.7" />
-                                </svg>
+                                <img src="../assets/icons/arrowDownIcon.svg" alt="arrowdown"/>
                             </ListboxButton>
                             <transition leave-active-class="transition duration-100 ease-in" leave-from-class="opacity-100"
                                 leave-to-class="opacity-0">
@@ -125,7 +137,7 @@ const filteredPeople = computed(() =>
                         <div v-for="person in filteredPeople" :key="person.id" :value="person"
                             class=" flex items-center justify-between w-full">
                             <p class="text-[#505050] font-[500] text-[14px] leading-[20px] dark:text-white">
-                                {{ person.name }}</p>
+                                {{ person.time }}</p>
                             <img src="../assets/icons/copyIcon.svg" alt="copy" class="cursor-pointer">
                         </div>
                         <div v-if="selectedPerson?.value?.name !== '' && filteredPeople.length === 0"

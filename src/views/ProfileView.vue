@@ -8,9 +8,7 @@ import ProxySetting from '../components/Dashboard Components/ProxySetting.vue';
 import AddressandAccountSetting from '../components/Dashboard Components/AddressandAccountSetting.vue';
 import LoginInfoSetting from '../components/Dashboard Components/LoginInfoSetting.vue';
 
-
 export default {
-
     components: {
         DashboardLayout,
         DashboardHeading,
@@ -21,6 +19,23 @@ export default {
         AddressandAccountSetting,
         LoginInfoSetting
     },
+    data() {
+        return {
+            approved: false,
+        };
+    },
+    mounted() {
+        let approvement = localStorage.getItem('approved');
+        if (approvement !== null) {
+            approvement === 'true' ? this.approved = true : this.approved = false;
+        }
+    },
+    methods: {
+        getApproved() {
+            this.approved = true;
+            localStorage.setItem('approved', this.approved)
+        },
+    },
 };
 </script>
 
@@ -28,7 +43,7 @@ export default {
     <DashboardLayout>
         <div>
             <DashboardHeading heading="Profile" />
-            <GetApproved />
+            <GetApproved @getApproved="getApproved" :approved="approved" />
             <WhiteCard :customClass="'flex flex-col items-start mt-[21px]'">
                 <div class="border-b border-[#EBEFF2] dark:border-[#343434] pt-[29px] pb-[24px] px-[24px] w-full">
                     <p class="text-[#505050] dark:text-white font-[700] text-[14px] leading-[20px]">

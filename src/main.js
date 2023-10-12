@@ -8,6 +8,7 @@ import "primevue/resources/themes/lara-light-indigo/theme.css";
 import "./assets/css/common.css";
 import VueApexCharts from "vue3-apexcharts";
 import { allCountries } from "country-region-data";
+import Tooltip from "primevue/tooltip";
 
 const navlink = document.getElementById("navlink");
 if (navlink === window.location.pathname) {
@@ -15,7 +16,7 @@ if (navlink === window.location.pathname) {
 }
 
 const app = createApp(App);
-
+app.directive("tooltip", Tooltip);
 app.component("Paginator", Paginator);
 app.use(PrimeVue, { ripple: true });
 app.use(router, allCountries);

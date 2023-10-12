@@ -6,13 +6,29 @@ import Button from "../shared/Button.vue";
 import GetApproved from '../components/Dashboard Components/GetApproved.vue';
 
 export default {
-
     components: {
         DashboardLayout,
         DashboardHeading,
         WhiteCard,
         Button,
         GetApproved
+    },
+    data() {
+        return {
+            approved: false,
+        };
+    },
+    mounted() {
+        let approvement = localStorage.getItem('approved');
+        if (approvement !== null) {
+            approvement === 'true' ? this.approved = true : this.approved = false;
+        }
+    },
+    methods: {
+        getApproved() {
+            this.approved = true;
+            localStorage.setItem('approved', this.approved)
+        },
     },
 };
 </script>
@@ -21,7 +37,7 @@ export default {
     <DashboardLayout>
         <div>
             <DashboardHeading heading="Purchase Bandwidth" />
-            <GetApproved />
+            <GetApproved @getApproved="getApproved" :approved="approved" />
             <WhiteCard :customClass="'flex flex-col items-center mt-[21px]'">
                 <div class="border-b border-[#EBEFF2] dark:border-[#343434] pt-[17px] pb-[14px] px-[24px] w-full">
                     <p class="text-[#505050] dark:text-white font-[700] text-[14px] leading-[20px]">
@@ -51,7 +67,7 @@ export default {
                                 <div class="form-control">
                                     <div class="flex items-center gap-[10px]">
                                         <input type="number" name="numofgb" id="numofgb"
-                                            class="h-[40px] px-[12px] py-[10px] border border-[#D0D0D0] w-[89px] rounded-[8px] ">
+                                            class="h-[40px] px-[12px] py-[10px] border border-[#D0D0D0] dark:border-[#343434] w-[89px] rounded-[8px] bg-transparent">
                                         <span class="font-[700] text-[14px] leading-[23px] text-black">GB</span>
                                     </div>
                                 </div>
@@ -251,10 +267,10 @@ export default {
                             <p>$25.00</p>
                         </div>
 
-                        <Button
-                            :customClass="' flex py-[12px] px-[22px] rounded-[4px] items-center justify-center text-white bg-[#07B6BF] text-[15px] font-[600] sm:h-[48px] w-full'">
-                            Get approved
-                        </Button>
+                        <button @click=getApproved()
+                            class=" flex py-[12px] px-[22px] rounded-[4px] items-center justify-center text-white bg-[#07B6BF] text-[15px] font-[600] sm:h-[48px] w-full">
+                            {{ approved?'Buy Now':'Get approved'}}
+                        </button>
                     </WhiteCard>
                 </div>
             </WhiteCard>

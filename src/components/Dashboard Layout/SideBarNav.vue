@@ -71,7 +71,7 @@ const isDark = useDark();
 </script>
 
 <template>
-    <div class="sidebar shadow-sidebar transition ease-in-out duration-300 z-[1] dark:bg-[#0D0D0D] dark:shadow-sidebarDark"
+    <div class="sidebar shadow-sidebar transition ease-in-out duration-300 z-[1] dark:bg-[#282828] dark:shadow-sidebarDark"
         :class="{ 'open': isSidebarOpen, 'closed': !isSidebarOpen }">
         <div>
             <div class="px-[24px] py-[30px] border-b border-[#EBEFF2] dark:border-[#212B33] h-[84px]">
