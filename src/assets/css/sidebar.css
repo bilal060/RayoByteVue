@@ -14,17 +14,20 @@
 
 }
 
-.navlink.router-link-active svg path {
+.navlink:is(.domainlist, .contactus, .dashboard, .profile).router-link-active svg path {
     fill: transparent !important;
-    stroke: #07B6BF !important;
+    stroke-width: 2 !important;
 }
 
+.navlink.router-link-active svg path {
+    fill: #07B6BF !important;
+    stroke: #07B6BF !important;
+    stroke-width: 0.5;
+}
 
 .sidebar.closed .navlink span {
     display: none !important;
-
 }
-
 
 .sidebar .navlink span {
     font-weight: 400;

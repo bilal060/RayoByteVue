@@ -81,9 +81,19 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/locationselection",
-      name: "locationselection",
-      component: HomeView,
+      path: "/locationcity",
+      name: "locationcity",
+      component: ProfileView,
+    },
+    {
+      path: "/locationstate",
+      name: "locationstate",
+      component: ProfileView,
+    },
+    {
+      path: "/locationcountry",
+      name: "locationcountry",
+      component: ProfileView,
     },
     {
       path: "/contactus",

@@ -7,15 +7,25 @@ export default {
     components: { DropDown },
     data() {
         return {
-            approved: false,
+            requestBiggerTrial: false,
         };
     },
     mounted() {
-        this.approved = localStorage.getItem('approved');
-        if (this.approved === null) {
-            this.approved = false;
+        this.requestBiggerTrial = localStorage.getItem('requestBiggerTrial');
+        if (this.requestBiggerTrial === null) {
+            this.requestBiggerTrial = false;
         }
+        // this.approved = localStorage.getItem('approved');
+        // if (this.approved === null) {
+        //     this.approved = false;
+        // }
     },
+    methods: {
+        RequestBiggerTrial() {
+            localStorage.setItem("requestBiggerTrial", true)
+            this.requestBiggerTrial = true;
+        }
+    }
 };
 
 </script>
@@ -52,7 +62,7 @@ const visible = ref(false);
             </Button>
         </Dialog>
 
-        <Button v-if="approved === false" @click="visible = true"
+        <Button v-if="requestBiggerTrial === false" @click="RequestBiggerTrial"
             :customClass="'hidden md:flex py-[8px] px-[16px] rounded-[4px] items-center justify-center text-white bg-[#07B6BF] w-full text-[15px] font-[600] h-[30px] max-w-[209px]'">Request
             bigger trial
         </Button>
@@ -110,7 +120,7 @@ const visible = ref(false);
                         </div>
                         <div class="md:hidden block">
                             <MenuItem v-slot="{ active }">
-                            <a v-if="approved === false" @click="visible = true"
+                            <a v-if="requestBiggerTrial === false" @click="RequestBiggerTrial"
                                 :class="[active ? 'text-gray-900' : 'text-black', 'dark:bg-[#0D0D0D] dark:text-[#b4b4b4b4] block px-[28px] py-3 text-sm cursor-pointer']">Request
                                 bigger trial</a>
                             <a v-else

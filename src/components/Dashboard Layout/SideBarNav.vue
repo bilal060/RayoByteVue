@@ -105,18 +105,10 @@ const isDark = useDark();
 
 
             <div class=" navlist">
-                <!-- <li v-for="link of navlinks" :key="link.key"
-                    class="h-[48px] text-gray-500 font-semibold flex items-center cursor-pointer">
-                    <RouterLink id="navlink" class="navlink px-[24px] w-full py-3 flex items-center gap-[14px] text-[14px]"
-                        :to="link.to">
-                        <span v-html="link.icon" id="navlinkspan" class="navlinkspan"></span>
-                        <span>{{ link.name }}</span>
-                    </RouterLink>
-                </li> -->
                 <ul class="border-b border-[#EBEFF2] dark:border-[#212B33] py-[24px] sidebar-nav1">
                     <li class="h-[48px] flex items-center cursor-pointer">
                         <RouterLink id="navlink"
-                            class="navlink px-[24px] w-full py-3 flex items-center gap-[14px] text-[14px]" to="/dashboard">
+                            class="navlink dashboard px-[24px] w-full py-3 flex items-center gap-[14px] text-[14px]" to="/dashboard">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_16428_2366)">
                                     <path
@@ -135,7 +127,7 @@ const isDark = useDark();
                     </li>
                     <li class="h-[48px] flex items-center cursor-pointer">
                         <RouterLink id="navlink"
-                            class="navlink px-[24px] w-full py-3 flex items-center gap-[14px] text-[14px]" to="/profile">
+                            class="navlink profile px-[24px] w-full py-3 flex items-center gap-[14px] text-[14px]" to="/profile">
                             <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_16416_723)">
                                     <path
@@ -152,7 +144,7 @@ const isDark = useDark();
                             <span class="dark:text-[#B4B4B4] text-[#505050]">Profile</span>
                         </RouterLink>
                     </li>
-                    <Disclosure>
+                    <Disclosure v-slot="{ open }">
                         <DisclosureButton
                             class="navlink ps-[24px] pe-[30px] w-full py-3 flex items-center justify-between text-[14px] gap-[2px]"
                             :class="$route.path === '/purchasebandwidth' || $route.path === '/autoreplenish' || $route.path === '/billinghistory' ? 'router-link-active' : ''">
@@ -173,7 +165,16 @@ const isDark = useDark();
 
                                 <span class="dark:text-[#B4B4B4] text-[#505050]">Billing </span>
                             </div>
-                            <img src="../../assets//icons/chevron-down.svg" alt="">
+                            <!-- <img src="../../assets//icons/chevron-down.svg" alt=""> -->
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                :class="open && 'rotate-180 transform'">
+                                <g id="chevron-down">
+                                    <path id="Icon" d="M4 6L8 10L12 6"
+                                        :stroke="$route.path === '/purchasebandwidth' || $route.path === '/autoreplenish' || $route.path === '/billinghistory' ? '#07B6BF' : '#475467'"
+                                        stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                </g>
+                            </svg>
+
 
                         </DisclosureButton>
                         <DisclosurePanel class="navlink py-[8px]"
@@ -241,7 +242,7 @@ const isDark = useDark();
                     </li>
                     <li class="h-[48px] flex items-center cursor-pointer">
                         <RouterLink id="navlink"
-                            class="navlink px-[24px] w-full py-3 flex items-center gap-[14px] text-[14px]" to="/domainlist">
+                            class="navlink domainlist px-[24px] w-full py-3 flex items-center gap-[14px] text-[14px]" to="/domainlist">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_16496_1358)">
                                     <path
@@ -261,7 +262,7 @@ const isDark = useDark();
                 <ul class="py-[24px] sidebar-nav2">
                     <li class="h-[48px] flex items-center cursor-pointer">
                         <RouterLink id="navlink"
-                            class="navlink px-[24px] w-full py-3 flex items-center gap-[14px] text-[14px]" to="/contactus">
+                            class="navlink contactus px-[24px] w-full py-3 flex items-center gap-[14px] text-[14px]" to="/contactus">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clip-path="url(#clip0_16416_2424)">
                                     <path
@@ -337,9 +338,10 @@ const isDark = useDark();
                             <span class="dark:text-[#B4B4B4] text-[#505050]">How to Use Sticky Sessions</span>
                         </RouterLink>
                     </li>
-                    <Disclosure>
+                    <Disclosure v-slot="{ open }">
                         <DisclosureButton
-                            class="navlink ps-[24px] pe-[30px] w-full py-3 flex items-center justify-between text-[14px] gap-[2px]">
+                            class="navlink ps-[24px] pe-[30px] w-full py-3 flex items-center justify-between text-[14px] gap-[2px]"
+                            :class="$route.path === '/locationstate' || $route.path === '/locationcity' || $route.path === '/locationcountry' ? 'router-link-active' : ''">
                             <div class="flex items-center gap-[14px]">
                                 <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -359,31 +361,72 @@ const isDark = useDark();
                                 </svg>
                                 <span class="dark:text-[#B4B4B4] text-[#505050]">Location Selection </span>
                             </div>
-                            <img src="../../assets//icons/chevron-down.svg" alt="">
-
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                :class="open && 'rotate-180 transform'">
+                                <g id="chevron-down">
+                                    <path id="Icon" d="M4 6L8 10L12 6"
+                                        :stroke="$route.path === '/locationstate' || $route.path === '/locationcity' || $route.path === '/locationcountry' ? '#07B6BF' : '#475467'"
+                                        stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                </g>
+                            </svg>
                         </DisclosureButton>
-                        <DisclosurePanel class="navlink w-full flex items-center text-[14px]"
+                        <DisclosurePanel class="navlink py-[8px]"
                             :class="{ 'pl-[24px]': !isSidebarOpen, 'pl-[40px]': isSidebarOpen }">
                             <li class="h-[38px] flex items-center cursor-pointer">
                                 <RouterLink id="navlink" class="navlink w-full flex items-center gap-[24px] text-[14px]"
-                                    to="/locationselection">
+                                    to="/locationcity">
                                     <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_16496_1392)">
+                                        <g clip-path="url(#clip0_10229_37292)">
                                             <path
-                                                d="M10.5 1.66699C7.27496 1.66699 4.66663 4.27533 4.66663 7.50033C4.66663 11.8753 10.5 18.3337 10.5 18.3337C10.5 18.3337 16.3333 11.8753 16.3333 7.50033C16.3333 4.27533 13.725 1.66699 10.5 1.66699ZM6.33329 7.50033C6.33329 5.20033 8.19996 3.33366 10.5 3.33366C12.8 3.33366 14.6666 5.20033 14.6666 7.50033C14.6666 9.90033 12.2666 13.492 10.5 15.7337C8.76663 13.5087 6.33329 9.87533 6.33329 7.50033Z"
-                                                fill="#B4B4B4" />
-                                            <path
-                                                d="M10.5 9.58366C11.6506 9.58366 12.5833 8.65092 12.5833 7.50033C12.5833 6.34973 11.6506 5.41699 10.5 5.41699C9.34937 5.41699 8.41663 6.34973 8.41663 7.50033C8.41663 8.65092 9.34937 9.58366 10.5 9.58366Z"
+                                                d="M11.3335 5.00033V7.50033H13.8335V9.16699H11.3335V11.667H9.66683V9.16699H7.16683V7.50033H9.66683V5.00033H11.3335ZM15.5002 8.50033C15.5002 5.47533 13.2918 3.33366 10.5002 3.33366C7.7085 3.33366 5.50016 5.47533 5.50016 8.50033C5.50016 10.4503 7.12516 13.0337 10.5002 16.117C13.8752 13.0337 15.5002 10.4503 15.5002 8.50033ZM10.5002 1.66699C14.0002 1.66699 17.1668 4.35033 17.1668 8.50033C17.1668 11.267 14.9418 14.542 10.5002 18.3337C6.0585 14.542 3.8335 11.267 3.8335 8.50033C3.8335 4.35033 7.00016 1.66699 10.5002 1.66699Z"
                                                 fill="#B4B4B4" />
                                         </g>
                                         <defs>
-                                            <clipPath id="clip0_16496_1392">
+                                            <clipPath id="clip0_10229_37292">
                                                 <rect width="20" height="20" fill="white" transform="translate(0.5)" />
                                             </clipPath>
                                         </defs>
                                     </svg>
-                                    <span class="dark:text-[#B4B4B4] text-[#505050]">Location Selection</span>
+                                    <span class="dark:text-[#B4B4B4] text-[#505050]">City</span>
+                                </RouterLink>
+                            </li>
+                            <li class="h-[38px] flex items-center cursor-pointer">
+                                <RouterLink id="navlink" class="navlink w-full flex items-center gap-[24px] text-[14px]"
+                                    to="/locationstate">
+                                    <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_10229_37300)">
+                                            <path
+                                                d="M17.1668 0.833008V3.33301H19.6668V4.99967H17.1668V7.49967H15.5002V4.99967H13.0002V3.33301H15.5002V0.833008H17.1668ZM10.5002 10.833C9.5835 10.833 8.8335 10.083 8.8335 9.16634C8.8335 8.24967 9.5835 7.49967 10.5002 7.49967C11.4168 7.49967 12.1668 8.24967 12.1668 9.16634C12.1668 10.083 11.4168 10.833 10.5002 10.833ZM11.3335 2.54967V4.23301C11.0578 4.18945 10.7792 4.16716 10.5002 4.16634C7.7085 4.16634 5.50016 6.30801 5.50016 9.33301C5.50016 11.283 7.12516 13.8663 10.5002 16.9497C13.8752 13.8663 15.5002 11.2913 15.5002 9.33301V9.16634H17.1668V9.33301C17.1668 12.0997 14.9418 15.3747 10.5002 19.1663C6.0585 15.3747 3.8335 12.0997 3.8335 9.33301C3.8335 5.18301 7.00016 2.49967 10.5002 2.49967C10.7835 2.49967 11.0585 2.51634 11.3335 2.54967Z"
+                                                fill="#B4B4B4" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_10229_37300">
+                                                <rect width="20" height="20" fill="white" transform="translate(0.5)" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <span class="dark:text-[#B4B4B4] text-[#505050]">State</span>
+                                </RouterLink>
+                            </li>
+                            <li class="h-[38px] flex items-center cursor-pointer">
+                                <RouterLink id="navlink" class="navlink w-full flex items-center gap-[24px] text-[14px]"
+                                    to="/locationcountry">
+                                    <svg width="21" height="20" viewBox="0 0 21 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_10229_37289)">
+                                            <path
+                                                d="M10.5002 10.0003C9.5835 10.0003 8.8335 9.25033 8.8335 8.33366C8.8335 7.41699 9.5835 6.66699 10.5002 6.66699C11.4168 6.66699 12.1668 7.41699 12.1668 8.33366C12.1668 9.25033 11.4168 10.0003 10.5002 10.0003ZM15.5002 8.50033C15.5002 5.47533 13.2918 3.33366 10.5002 3.33366C7.7085 3.33366 5.50016 5.47533 5.50016 8.50033C5.50016 10.4503 7.12516 13.0337 10.5002 16.117C13.8752 13.0337 15.5002 10.4503 15.5002 8.50033ZM10.5002 1.66699C14.0002 1.66699 17.1668 4.35033 17.1668 8.50033C17.1668 11.267 14.9418 14.542 10.5002 18.3337C6.0585 14.542 3.8335 11.267 3.8335 8.50033C3.8335 4.35033 7.00016 1.66699 10.5002 1.66699Z"
+                                                fill="#B4B4B4" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_10229_37289">
+                                                <rect width="20" height="20" fill="white" transform="translate(0.5)" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                    <span class="dark:text-[#B4B4B4] text-[#505050]">Country</span>
                                 </RouterLink>
                             </li>
                         </DisclosurePanel>
